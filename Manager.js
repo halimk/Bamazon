@@ -4,7 +4,7 @@ var connection = mysql.createConnection({
 	host: 'localhost',
 	port: 3306,
 	user: 'root',
-	password: '',
+	password: 'duke4566',
 	database: 'Bamazon_db'
 });
 
@@ -20,7 +20,7 @@ function managerInput(){
 	inquirer.prompt([{
 		type: 'list',
 		name: 'input',
-		message: 'What would you like to do today?',
+		message: 'Can I help you find someting today?',
 		choices: ['1) View Products for sale', '2) View low inventory', '3) Add to inventory', '4) Add new product']
 	}]).then(function(answer){
 		if(answer.input === '1) View Products for sale'){
@@ -66,7 +66,7 @@ function managerInput(){
 					}
 			},{
 				name: 'number',
-				message: 'How many items would you like to add to the current supply?',
+				message: 'How many items would you like to buy?',
 				validate: function(value){
 					var valid = value.match(/^[0-9]+$/)
 					if(valid){
@@ -132,13 +132,13 @@ function newTransaction(){
 	inquirer.prompt([{
 		type: 'confirm',
 		name: 'choice',
-		message: 'Would you like to perform another transaction?'
+		message: 'Would you like to make another transaction?'
 	}]).then(function(answer){
 		if(answer.choice){
 			managerInput();
 		}
 		else{
-			console.log('Have a good day');
+			console.log('Thank you! Have a great day');
 			connection.end();
 		}
 	})
